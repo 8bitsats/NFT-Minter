@@ -10,10 +10,10 @@ export function getExplorerUrl(
       let cluster = ''
       if (endpoint === 'localnet') {
         cluster = `custom&customUrl=${encodeURIComponent(
-          'http://127.0.0.1:8899'
+          'http://localhost:3004/'
         )}`
-      } else if (endpoint === 'https://api.devnet.solana.com') {
-        cluster = 'devnet'
+      } else if (endpoint === 'https://mainnet.helius-rpc.com/?api-key=035bebc1-3e21-4b5a-8031-a5634236df89') {
+        cluster = 'mainnet'
       }
   
       return cluster ? `?cluster=${cluster}` : ''

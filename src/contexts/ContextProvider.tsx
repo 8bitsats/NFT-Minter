@@ -25,7 +25,13 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const { autoConnect } = useAutoConnect();
     const { networkConfiguration } = useNetworkConfiguration();
     const network = networkConfiguration as WalletAdapterNetwork;
-    const endpoint = useMemo(() => process.env.RPC_ENDPOINT ?? "https://api.devnet.solana.com", []);
+
+    const endpoint = useMemo(() => {
+        if (network === 'devnet') {
+            return "https://devnet.helius-rpc.com/?api-key=035bebc1-3e21-4b5a-8031-a5634236df89";
+        }
+        return "https://mainnet.helius-rpc.com/?api-key=035bebc1-3e21-4b5a-8031-a5634236df89";
+    }, [network]);
 
     console.log(network);
 
